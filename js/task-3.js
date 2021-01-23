@@ -1,41 +1,39 @@
 'use strict';
-const findBestEmployee = (employees) => {
-  const keys = Object.keys(employees);
+// Используй массив объектов images для создания тегов img вложенных в li.
+// Для создания разметки используй шаблонные строки и insertAdjacentHTML().
 
-  let total = 0;
-  let message = '';
+// Все элементы галереи должны добавляться в DOM за одну операцию вставки.
+// Добавь минимальное оформление галереи флексбоксами или гридами через css-классы.
 
-  for (const key of keys) {
-    if (employees[key] > total) {
-      total = employees[key];
-      message = key;
-    }
-  }
-  return message;
-};
+const images = [
+  {
+    url:
+      'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'White and Black Long Fur Cat',
+  },
+  {
+    url:
+      'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+  },
+  {
+    url:
+      'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+    alt: 'Group of Horses Running',
+  },
+];
 
-console.log(
-  findBestEmployee({
-    ann: 29,
-    david: 35,
-    helen: 1,
-    lorence: 99,
-  }),
-); // lorence
-
-console.log(
-  findBestEmployee({
-    poly: 12,
-    mango: 17,
-    ajax: 4,
-  }),
-); // mango
-
-console.log(
-  findBestEmployee({
-    lux: 147,
-    david: 21,
-    kiwi: 19,
-    chelsy: 38,
-  }),
-); // lux
+const ulRef = document.querySelector('#gallery');
+ulRef.classList.add('list')
+const newLiRefs = images.map(image => {
+  const itemRef = document.createElement('li');
+  itemRef.classList.add('list-item');
+  const imgRef = document.createElement('img');
+  imgRef.classList.add('list-item-img');
+  imgRef.setAttribute('src', image.url);
+  imgRef.setAttribute('alt', image.alt);
+  itemRef.appendChild(imgRef);
+  return itemRef;
+});
+newLiRefs.forEach(liRef => ulRef.insertAdjacentElement('beforeend', liRef));
+// ulRef.insertAdjacentHTML('beforeend', ...newLiRefs);

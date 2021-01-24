@@ -25,15 +25,8 @@ const images = [
 
 const ulRef = document.querySelector('#gallery');
 ulRef.classList.add('list')
-const newLiRefs = images.map(image => {
-  const itemRef = document.createElement('li');
-  itemRef.classList.add('list-item');
-  const imgRef = document.createElement('img');
-  imgRef.classList.add('list-item-img');
-  imgRef.setAttribute('src', image.url);
-  imgRef.setAttribute('alt', image.alt);
-  itemRef.appendChild(imgRef);
-  return itemRef;
-});
-newLiRefs.forEach(liRef => ulRef.insertAdjacentElement('beforeend', liRef));
-// ulRef.insertAdjacentHTML('beforeend', ...newLiRefs);
+const newLiRefs = images.reduce(
+  (acc, image) => 
+  acc + `<li class ='list-item'><img class='list-item-img' src="${image.url}" alt="${image.alt}"></li>`, []
+);
+ulRef.insertAdjacentHTML('afterbegin', newLiRefs);

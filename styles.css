@@ -1,3 +1,10 @@
+#categories {
+  display: flex;
+  list-style: none;
+}
+.item:not(:last-child) {
+  margin-right: 10px;
+}
 .list {
   display: flex;
   list-style: none;
@@ -12,8 +19,18 @@
   height: 100px;
 }
 
+#gallery{
+margin-bottom: 10px;
+}
+
+#counter{
+  margin-bottom: 10px;
+}
+
 #validation-input {
   border: 3px solid #bdbdbd;
+  display: block;
+  margin-bottom: 10px;
 }
 
 #validation-input.valid {
@@ -22,4 +39,13 @@
 
 #validation-input.invalid {
   border-color: #f44336;
+}
+
+#font-size-control {
+display: block;
+}
+
+#text {
+  display: inline-block;
+  margin-bottom: 10px;
 }
